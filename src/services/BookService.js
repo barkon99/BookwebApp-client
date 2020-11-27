@@ -12,6 +12,9 @@ class BookService{
     getBook(id) {
         return axios.get(API_URL + "/" + id, { headers: authHeader() });
     }
+    getUserBooks(userId) {
+        return axios.get(API_URL + "/user/" + userId, { headers: authHeader() });
+    }
     addBook(formData){
         return axios.post(API_URL,formData)
     }

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import AdminService from "../services/AdminService";
+import isAdmin from "../services/isAdmin"
 
 export default class AdminPage extends Component {
   constructor(props) {
@@ -42,8 +43,14 @@ export default class AdminPage extends Component {
   render() {
     return (
       <div>
-         <h2 className="text-center">Books To Accept</h2>
-          <div className="row" style={{margin: "0 30px 0 30px"}}>
+        {!isAdmin() ? (
+          <div class="alert alert-danger" role="alert">
+             You are forbidden to this page
+          </div>
+        ): (
+          <div> 
+            <h2 className="text-center">Books To Accept</h2>
+            <div className="row" style={{margin: "0 30px 0 30px"}}>
               <table className="table table-striped table-bordered" >
                   <thead>
                       <tr>
@@ -55,8 +62,7 @@ export default class AdminPage extends Component {
                       </tr>
                   </thead>
 
-                  <tbody>
-                      {
+                  <tbody>{
                           this.state.books.map(book => 
                               <tr key={book.id}>
                                   <td>
@@ -75,11 +81,16 @@ export default class AdminPage extends Component {
                                   </td>
                               </tr>
                           )
-                      }
+                    }
+        
+
                   </tbody>
               </table>
           </div> 
-      </div>
-  );
-  }
+      </div>)
+     
+        
+    }
+  </div>)}
 }
+

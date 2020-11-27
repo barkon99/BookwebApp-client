@@ -12,6 +12,7 @@ import HomePage from "./components/HomePage.js";
 import BooksPage from "./components/BooksPage.js";
 import AddBook from "./components/AddBook.js";
 import isAdmin from "./services/isAdmin"
+import UserBooks from "./components/UserBooks.js";
 
 
 class App extends Component {
@@ -68,6 +69,11 @@ class App extends Component {
                     </Link>
                   </li>
                   <li className="nav-item">
+                    <Link to={`/books/user/${this.state.currentUser.id}`} className="nav-link">
+                      Your books
+                    </Link>
+                  </li>
+                  <li className="nav-item">
                     <Link to={"/profile"} className="nav-link">
                       {currentUser.username}
                     </Link>
@@ -104,11 +110,9 @@ class App extends Component {
                 <Route path="/admin" component={AdminPage} />
                 <Route path='/books' exact component={BooksPage}></Route>
                 <Route path='/books/add-book/:id' component={AddBook}></Route>
+                <Route path='/books/user/:id' component={UserBooks}></Route>
               </Switch>
           </div>
-          {/* <div className="image-div" style={{backgroundImage: "url('https://png.pngtree.com/png-vector/20190918/ourlarge/pngtree-open-book-3298621-png-image_1739935.jpg')"}}>
-              
-          </div> */}
         </div>
       );
   }
