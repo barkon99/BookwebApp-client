@@ -183,9 +183,14 @@ class Register extends Component {
                       <CheckButton style={{ display: "none" }} ref={c => { this.checkBtn = c;}}
                       />
                     </Form>
-                    <div class="alert alert-primary" style={{marginTop:"30px"}} role="alert">  
-                      If you have an account go to <Link to="/login" class="alert-link">login page</Link>.
-                  </div>
+                    {this.state.message.length == 0 &&
+                      (
+                        <div className="alert alert-primary" style={{marginTop:"30px"}} role="alert">  
+                          If you have an account go to <Link to="/login" class="alert-link">login page</Link>.
+                        </div>
+                      )
+                    }
+                    
                 </div>
             </div>
         );

@@ -10,7 +10,7 @@ class SelectCategories extends Component {
         this.handleButton = this.handleButton.bind(this)
     }
     componentDidMount(){
-        let arrayOfCat = ["ALL","BIOGRAPHY", "FANTASY", "HISTORY", "HORROR", "NON-FICTION", "ROMANCE", "SCIENCE", "THRILLER", "OTHER"]
+        let arrayOfCat = ["ALL","BIOGRAPHY", "FANTASY", "HISTORY", "HORROR", "NON_FICTION", "ROMANCE", "SCIENCE", "THRILLER", "OTHERS"]
         this.setState({categories: arrayOfCat})
         this.state.clickedButton.push("ALL")
         this.setState({clickedButton: this.state.clickedButton})

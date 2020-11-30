@@ -35,7 +35,7 @@ class AddBook extends Component {
     }
 
     componentDidMount(){
-        let arrayOfCat = ["BIOGRAPHY", "FANTASY", "HISTORY", "HORROR", "NON-FICTION", "ROMANCE", "SCIENCE", "THRILLER", "OTHER"]
+        let arrayOfCat = ["BIOGRAPHY", "FANTASY", "HISTORY", "HORROR", "NON_FICTION", "ROMANCE", "SCIENCE", "THRILLER", "OTHERS"]
         this.setState({categories: arrayOfCat})
         if(this.state.id == -1){
             this.setState({image: -1, loaded:true})
@@ -46,6 +46,7 @@ class AddBook extends Component {
                 this.setState({title: book.title, author: book.author, image: book.imageUrl, loaded:true})
             })
         }
+        
     }
 
 
@@ -90,6 +91,7 @@ class AddBook extends Component {
     }
 
     selectCategory = (event) =>{
+        
         let chosenCat = this.state.categories
         .filter(category => category.toLowerCase() === (event.target.value).toLowerCase()).toString()
         this.setState({chosenCategory: chosenCat})
@@ -136,7 +138,7 @@ class AddBook extends Component {
                                             <option name="fantasy" >Fantasy</option>
                                             <option name="history">History</option>
                                             <option name="horror">Horror</option>
-                                            <option name="non-fiction">Non-Fiction</option>
+                                            <option name="non-fiction">Non_Fiction</option>
                                             <option name="romance">Romance</option>
                                             <option name="science">Science</option>
                                             <option name="thriller">Thriller</option>

@@ -27,7 +27,7 @@ class BooksPage extends Component {
         BookService.getAllBooks().then(
             response => {
               this.setState({
-                books: response.data,
+                books: response.data.sort(this.compareByIdDesc),
                 loaded: true
               })
             }
@@ -56,14 +56,38 @@ class BooksPage extends Component {
     }
     changeArray(event){
         let value = event.target.value;
-        if(value === "Sort from the oldest" || value === "Sort from the earliest")
-            this.setState(this.state.books.reverse())  
+        if(value === "Sort from the latest"){
+            this.setState(this.state.books.sort(this.compareByIdDesc))  
+        }
+        else if(value === "Sort from the earliest"){
+            this.setState(this.state.books.sort(this.compareByIdAsc))  
+        }
         else if(value === "Sort by average rate"){
             this.setState(this.state.books.sort(this.compareByAverageRate))
         }
         else{
             this.setState(this.state.books.sort(this.compareByPopularity))
         }  
+    }
+    compareByIdDesc(a,b){
+        let comparison = 0
+        if(a.id < b.id){
+            comparison = 1
+        }
+        else if (a.id > b.id){
+            comparison = -1
+        }
+        return comparison
+    }
+    compareByIdAsc(a,b){
+        let comparison = 0
+        if(a.id > b.id){
+            comparison = 1
+        }
+        else if (a.id < b.id){
+            comparison = -1
+        }
+        return comparison
     }
     compareByAverageRate(a,b){
         let comparison = 0
@@ -110,7 +134,7 @@ class BooksPage extends Component {
                 <div className="row form-group" style={{margin: "0 0 15px 30px"}}>
                     <button className="btn btn-primary inputs" onClick={this.addBook} >Add Book</button>
                     <select className="form-control inputs select" onChange={this.changeArray}>
-                        <option name="the oldest">Sort from the oldest</option>
+                        <option name="the oldest">Sort from the latest</option>
                         <option name="the earliest" >Sort from the earliest</option>
                         <option name="average rate">Sort by average rate</option>
                         <option name="popularity">Sort by popularity</option>
