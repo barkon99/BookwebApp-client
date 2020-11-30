@@ -21,6 +21,6 @@
  - bootstrap
  
  
- ## Client
- https://github.com/barkon99/BookwebApp-client
+ ## Server
+ https://github.com/barkon99/BookwebApp-server
 
